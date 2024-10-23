@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .body_do {
+            background-color: black;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            padding-top: 250px;
+        }
+        .calculater {
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid white;
+        }
+        .calculater button {
+            border: 0;
+            outline: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, -0.1), 5px 5px 15px rgba(240, 239, 239, 0.2);
+            background: transparent;
+            font-size: 20px;
+            color: #fff;
+            background-color: rgba(222, 184, 135, 0.474);
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .screen {
+            display: flex;
+            justify-content: flex-end;
+            margin: 20px 0;
+            color: #fff;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.417);
+            text-align: right;
+            flex: 1;
+            font-size: 45px;
+            box-shadow: none;
+            border-radius: 10px;
+        }
+        .title {
+            position: absolute;
+            top: 10%;
+            left: 27%;
+            font-size: 140px;
+            -webkit-text-stroke: 1px #fff;
+            color: transparent;
+            background-image: linear-gradient(rgba(222, 136, 23, 0.94), #1cdb62ad);
+            background-repeat: no-repeat;
+            font-weight: bolder;
+        }
+        .vapour {
+            position: relative;
+            display: flex;
+            z-index: 1;
+            padding: 0 20px;
+            top: 28%;
+            margin-left: 330px;
+        }
+        .vapour span {
+            position: relative;
+            bottom: 50px;
+            display: block;
+            margin: 0 2px 50px;
+            min-width: 8px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body class="body_do">
+    <div class="container">
+        <div class="calculater">
+            <div class="screen"></div>
+            <div>
+                <button class="operator" onclick="ac()">AC</button>
+                <BUtton class="operator" onclick="on()">ON</BUtton>
+                <button class="operator" onclick="off()">OFF</button>
+                <button class="operator" onclick="backbutton()">-</button>
+                <button class="operator" onclick="action('/')">/</button>
+            </div>
+            <div>
+                <button onclick="num(7)">7</button>
+                <button onclick="num(8)">8</button>
+                <button onclick="num(9)">9</button>
+                <button onclick="sqrt(0)">X^2</button>
+                <button onclick="action('*')"> * </button>
+            </div>
+            <div>
+                <button onclick="num(4)">4</button>
+                <button onclick="num(5)">5</button>
+                <button onclick="num(6)">6</button>
+                <button onclick="sqrt(1)">√'</button>
+                <button onclick="action('-')">-</button>
+            </div>
+            <div>
+                <button onclick="num(1)">1</button>
+                <button onclick="num(2)">2</button>
+                <button onclick="num(3)">3</button>
+                <button onclick="plusMinus()">+-</button>
+                <button onclick="action('+')">+</button>
+            </div>
+            <div>
+                <button onclick="click_0()">00</button>
+                <button onclick="click_0()">0</button>
+                <button onclick="num('.')">.</button>
+                <button onclick="per()">%</button>
+                <button onclick="equalTo()">=</button>
+            </div>
+        </div>
+    </div>
+
+
+    <br><br>
+
+
+    <script>
+
+        //  use for a on off fuction start
+        onoff = 0;
+        function off() {
+            onoff = 0;
+            document.getElementsByClassName("screen")[0].innerHTML = "";
+        }
+        function on() {
+            onoff = 1;
+            document.getElementsByClassName("screen")[0].innerHTML = 0;
+        }
+        //  use for a on off fuction end
+
+        // three different function start here
+        function backbutton() {
+            var screen = document.getElementsByClassName("screen")[0].innerHTML;
+            document.getElementsByClassName("screen")[0].innerHTML = screen.substring(0, screen.length - 1);
+        }
+        function ac() {
+            document.getElementsByClassName("screen")[0].innerHTML = "";
+        }
+        function per() {
+            var screen = document.getElementsByClassName("screen")[0].innerHTML;
+            document.getElementsByClassName("screen")[0].innerHTML = parseFloat(screen) / 100;
+        }
+        function plusMinus() {
+            var screen = document.getElementsByClassName("screen")[0].innerHTML;
+            document.getElementsByClassName("screen")[0].innerHTML = parseFloat(screen) * (-1);
+        }
+        function sqrt(n) {
+            var value = document.getElementsByClassName("screen")[0].innerHTML;
+            if (n == 1) {
+                document.getElementsByClassName("screen")[0].innerHTML = Math.sqrt(parseFloat(value));
+            } else {
+                document.getElementsByClassName("screen")[0].innerHTML = parseFloat(value) * parseFloat(value);
+            }
+        }
+
+
+
+        // only use for a screen number function start
+
+        function num(n) {
+            if (onoff == 0) {
+                return;
+            }
+            var screen = document.getElementsByClassName("screen")[0].innerHTML;
+            if (screen.length < 16) {
+                document.getElementsByClassName("screen")[0].innerHTML = screen + n;
+            }
+        }
+        // only use for a screen number function end
+
+
+        // only use for equal function start
+        function action(n) {
+            if (onoff == 1) {
+
+                action_symbol = n;
+                val_1 = document.getElementsByClassName("screen")[0].innerHTML;
+                document.getElementsByClassName("screen")[0].innerHTML = "";
+            }
+
+        }
+        function equalTo() {
+
+            if (onoff == 1) {
+
+                var val_2 = document.getElementsByClassName("screen")[0].innerHTML;
+                if (action_symbol == "+") {
+                    document.getElementsByClassName("screen")[0].innerHTML = parseFloat(val_1) + parseFloat(val_2);
+                }
+                else if (action_symbol == "-") {
+                    document.getElementsByClassName("screen")[0].innerHTML = parseFloat(val_1) - parseFloat(val_2);
+                }
+                else if (action_symbol == "*") {
+                    document.getElementsByClassName("screen")[0].innerHTML = parseFloat(val_1) * parseFloat(val_2);
+                }
+                else if (action_symbol == "/") {
+                    document.getElementsByClassName("screen")[0].innerHTML = parseFloat(val_1) / parseFloat(val_2);
+                }
+            }
+        }
+        // only use for equal function end
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+.enquiry {
+    font-family: "Poppins", sans-serif;
+    .container {
+        .row {
+            .col-lg-4 {
+                .main {
+                    position: relative;
+                    .child {
+                        top: 0;
+                        left: 0;   
+                        position: absolute;
+                        padding: 25px;
+                        transition: 0.4s;
+                        transform: scale(0);
+                        background-color: #03505C;
+                        opacity: 70%;
+                        height: 100%;
+                        width: 100%;
+                        div {
+                            button {
+                                padding: 10px 25px;
+                                border-radius: 30px;
+                            }
+                        }
+                    }
+                }
+                .main:hover .child {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}

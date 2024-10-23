@@ -1,0 +1,52 @@
+.iceberg-container {
+    background: url(/assetes/img/blue-border-abstract-gradient-background\ 1.png);
+    background-size: cover;
+    padding: 100px 0px;
+  }
+  
+  .card-container .container .row .col-4 figure {
+    display: grid;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .card-container .container .row .col-4 figure > * {
+    grid-area: 1/1;
+    transition: 0.4s;
+  }
+  .card-container .container .row .col-4 figure figcaption {
+    display: grid;
+    align-items: end;
+    font-family: sans-serif;
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0);
+    padding: 0.75rem;
+    background: var(--c, rgba(0, 0, 0, 0.6));
+    -webkit-clip-path: inset(0 var(--_i, 100%) 0 0);
+            clip-path: inset(0 var(--_i, 100%) 0 0);
+    /* -webkit-mask: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    -webkit-mask-clip: text, padding-box; */
+    margin: -1px;
+  }
+  .card-container .container .row .col-4 figure:hover figcaption {
+    --_i: 0%;
+  }
+  .card-container .container .row .col-4 figure:hover img {
+    transform: scale(1.2);
+  }
+  @supports not (-webkit-mask-clip: text) {
+    .card-container .container .row .col-4 figure figcaption {
+      /* -webkit-mask: none; */
+      color: #fff;
+    }
+  }
+  .card-container .container .row .col-4 body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    background: #425a52;
+  }

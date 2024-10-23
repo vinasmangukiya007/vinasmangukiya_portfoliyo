@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.product{
+  background-image: url(../img/contect.png);
+  height: 420px;
+  background-size: 1300px 460px;
+  background-repeat: no-repeat;
+  margin-top: 0px;
+}
